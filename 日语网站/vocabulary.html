@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的词库 - Anime日语每日课</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Noto+Serif:wght@400;700&family=Noto+Serif+JP:wght@400;700&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="app">
+        <!-- 导航栏 -->
+        <nav class="navbar">
+            <div class="navbar-logo">
+                <img src="images/logo.png" alt="Anime日语每日课">
+                <h1>Anime日语每日课</h1>
+            </div>
+            <div class="navbar-links">
+                <a href="index.html" class="navbar-link">首页</a>
+                <a href="today.html" class="navbar-link">今日学习</a>
+                <a href="vocabulary.html" class="navbar-link active">我的词库</a>
+                <a href="reports.html" class="navbar-link">学习报告</a>
+                <a href="settings.html" class="navbar-link">设置</a>
+                <a href="help.html" class="navbar-link">帮助</a>
+            </div>
+            <div class="navbar-user">
+                <img src="images/avatar.png" alt="用户头像">
+                <span>用户名</span>
+            </div>
+            <button class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+
+        <!-- 主内容 -->
+        <main class="main-content">
+            <div class="vocabulary-page container">
+                <h1 class="mb-3">我的词库</h1>
+                
+                <!-- 筛选和搜索 -->
+                <div class="vocabulary-filters">
+                    <div class="vocabulary-search">
+                        <input type="text" placeholder="搜索词汇..." id="vocabulary-search">
+                    </div>
+                    
+                    <select id="level-filter" class="p-2 rounded">
+                        <option value="all">所有级别</option>
+                        <option value="N5">N5</option>
+                        <option value="N4">N4</option>
+                        <option value="N3">N3</option>
+                        <option value="N2">N2</option>
+                        <option value="N1">N1</option>
+                    </select>
+                    
+                    <select id="category-filter" class="p-2 rounded">
+                        <option value="all">所有类别</option>
+                        <option value="noun">名词</option>
+                        <option value="verb">动词</option>
+                        <option value="adjective">形容词</option>
+                        <option value="adverb">副词</option>
+                        <option value="grammar">语法</option>
+                    </select>
+                    
+                    <select id="sort-by" class="p-2 rounded">
+                        <option value="recent">最近添加</option>
+                        <option value="mastery-asc">掌握度（低到高）</option>
+                        <option value="mastery-desc">掌握度（高到低）</option>
+                        <option value="alphabetical">字母顺序</option>
+                    </select>
+                    
+                    <button class="btn-primary" id="review-selected-btn">
+                        <i class="fas fa-play mr-1"></i> 复习选中
+                    </button>
+                </div>
+                
+                <!-- 词汇统计 -->
+                <div class="bg-white rounded shadow p-3 mb-3">
+                    <div class="d-flex justify-between flex-wrap">
+                        <div class="text-center p-2" style="flex: 1; min-width: 120px;">
+                            <div class="summary-value">157</div>
+                            <div class="summary-label">总词汇量</div>
+                        </div>
+                        <div class="text-center p-2" style="flex: 1; min-width: 120px;">
+                            <div class="summary-value">42</div>
+                            <div class="summary-label">本周新增</div>
+                        </div>
+                        <div class="text-center p-2" style="flex: 1; min-width: 120px;">
+                            <div class="summary-value">78</div>
+                            <div class="summary-label">已掌握</div>
+                        </div>
+                        <div class="text-center p-2" style="flex: 1; min-width: 120px;">
+                            <div class="summary-value">35</div>
+                            <div class="summary-label">需复习</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 词汇分类标签 -->
+                <div class="mb-3">
+                    <button class="btn-primary mr-1 mb-1">全部</button>
+                    <button class="btn-secondary mr-1 mb-1">名词</button>
+                    <button class="btn-secondary mr-1 mb-1">动词</button>
+                    <button class="btn-secondary mr-1 mb-1">形容词</button>
+                    <button class="btn-secondary mr-1 mb-1">副词</button>
+                    <button class="btn-secondary mr-1 mb-1">语法</button>
+                    <button class="btn-secondary mr-1 mb-1">校园</button>
+                    <button class="btn-secondary mr-1 mb-1">热血</button>
+                    <button class="btn-secondary mr-1 mb-1">科幻</button>
+                </div>
+                
+                <!-- 词汇列表 -->
+                <div class="vocabulary-grid">
+                    <!-- 词汇卡片1 -->
+                    <div class="vocabulary-card">
+                        <div class="vocabulary-card-header">
+                            <div class="vocabulary-card-word">学校</div>
+                            <div class="vocabulary-card-level">N5</div>
+                        </div>
+                        <div class="vocabulary-card-reading">がっこう</div>
+                        <div class="vocabulary-card-meaning">学校</div>
+                        <div class="vocabulary-card-example font-jp mb-2">毎日学校に行きます。</div>
+                        <div class="vocabulary-card-example-cn mb-2">每天去学校。</div>
+                        <div class="d-flex justify-between mb-1">
+                            <span>掌握度</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="vocabulary-card-mastery">
+                            <div class="vocabulary-card-mastery-fill" style="width: 85%;"></div>
+                        </div>
+                        <div class="d-flex justify-between mt-2">
+                            <button class="btn-secondary" style="padding: 4px 8px; font-size: 0.8rem;">
+                                <i class="fas fa-volume-up"></i>
+                            </button>
+                            <button class="btn-primary" style="padding: 4px 8px; font-size: 0.8rem;">
+                                复习
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- 词汇卡片2 -->
+                    <div class="vocabulary-card">
+                        <div class="vocabulary-card-header">
+                            <div class="vocabulary-card-word">勉強</div>
+                            <div class="vocabulary-card-level">N5</div>
+                        </div>
+                        <div class="vocabulary-card-reading">べんきょう</div>
+                        <div class="vocabulary-card-meaning">学习，用功</div>
+                        <div class="vocabulary-card-example font-jp mb-2">日本語を勉強しています。</div>
+                        <div class="vocabulary-card-example-cn mb-2">我在学习日语。</div>
+                        <div class="d-flex justify-between mb-1">
+                            <span>掌握度</span>
+                            <span>92%</span>
+                        </div>
+                        <div class="vocabulary-card-mastery">
+                            <div class="vocabulary-card-mastery-fill" style="width: 92%;"></div>
+                        </div>
+                        <div class="d-flex justify-between mt-2">
+                            <button class="btn-secondary" style="padding: 4px 8px; font-size: 0.8rem;">
+                                <i class="fas fa-volume-up"></i>
+                            </button>
+                            <button class="btn-primary" style="padding: 4px 8px; font-size: 0.8rem;">
+                                复习
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- 词汇卡片3 -->
+                    <div class="vocabulary-card">
+                        <div class="vocabulary-card-header">
+                            <div class="vocabulary-card-word">友達</div>
+                            <div class="vocabulary-card-level">N5</div>
+                        </div>
+                        <div class="vocabulary-card-reading">ともだち</div>
+                        <div class="vocabulary-card-meaning">朋友</div>
+                        <div class="vocabulary-card-example font-jp mb-2">友達と一緒に勉強します。</div>
+                        <div class="vocabulary-card-example-cn mb-2">和朋友一起学习。</div>
+                        <div class="d-flex justify-between mb-1">
+                            <span>掌握度</span>
+                            <span>78%</span>
+                        </div>
+                        <div class="vocabulary-card-mastery">
+                            <div class="vocabulary-card-mastery-fill" style="width: 78%;"></div>
+                        </div>
+                        <div class="d-flex justify-between mt-2">
+                            <button class="btn-secondary" style="padding: 4px 8px; font-size: 0.8rem;">
+                                <i class="fas fa-volume-up"></i>
+                            </button>
+                            <button class="btn-primary" style="padding: 4px 8px; font-size: 0.8rem;">
+                                复习
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- 词汇卡片4 -->
+                    <div class="vocabulary-card">
+                        <div class="vocabulary-card-header">
+                            <div class="vocabulary-card-word">〜される</div>
+                            <div class="vocabulary-card-level">N4</div>
+                        </div>
+                        <div class="vocabulary-card-reading">〜される</div>
+                        <div class="vocabulary-card-meaning">被动形：表示被动作或自发</div>
+                        <div class="vocabulary-card-example font-jp mb-2">友達と一緒に勉強されています。</div>
+                        <div class="vocabulary-card-example-cn mb-2">和朋友一起被学习/正在学习。</div>
+                        <div class="d-flex justify-between mb-1">
+                            <span>掌握度</span>
+                            <span>45%</span>
+                        </div>
+                        <div class="vocabulary-card-mastery">
+                            <div class="vocabulary-card-mastery-fill" style="width: 45%;"></div>
+                        </div>
+                        <div class="d-flex justify-between mt-2">
+                            <button class="btn-secondary" style="padding: 4px 8px; font-size: 0.8rem;">
+                                <i class="fas fa-volume-up"></i>
+                            </button>
+                            <button class="btn-primary" style="padding: 4px 8px; font-size: 0.8rem;">
+                                复习
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- 词汇卡片5 -->
+                    <div class="vocabulary-card">
+                        <div class="vocabulary-card-header">
+                            <div class="vocabulary-card-word">一緒に</div>
+                            <div class="vocabulary-card-level">N5</div>
+                        </div>
+                        <div class="vocabulary-card-reading">いっしょに</div>
+                        <div class="vocabulary-card-meaning">一起，共同</div>
+                        <div class="vocabulary-card-example font-jp mb-2">友達と一緒に映画を見ました。</div>
+                        <div class="vocabulary-card-example-cn mb-2">和朋友一起看了电影。</div>
+                        <div class="d-flex justify-between mb-1">
+                            <span>掌握度</span>
+                            <span>88%</span>
+                        </div>
+                        <div class="vocabulary-card-mastery">
+                            <div class="vocabulary-card-mastery-fill" style="width: 88%;"></div>
+                        </div>
+                        <div class="d-flex justify-between mt-2">
+                            <button class="btn-secondary" style="padding: 4px 8px; font-size: 0.8rem;">
+                                <i class="fas fa-volume-up"></i>
+                            </button>
+                            <button class="btn-primary" style="padding: 4px 8px; font-size: 0.8rem;">
+                                复习
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- 词汇卡片6 -->
+                    <div class="vocabulary-card">
+                        <div class="vocabulary-card-header">
+                            <div class="vocabulary-card-word">毎日</div>
+                            <div class="vocabulary-card-level">N5</div>
+                        </div>
+                        <div class="vocabulary-card-reading">まいにち</div>
+                        <div class="vocabulary-card-meaning">每天</div>
+                        <div class="vocabulary-card-example font-jp mb-2">毎日日本語を勉強します。</div>
+                        <div class="vocabulary-card-example-cn mb-2">每天学习日语。</div>
+                        <div class="d-flex justify-between mb-1">
+                            <span>掌握度</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="vocabulary-card-mastery">
+                            <div class="vocabulary-card-mastery-fill" style="width: 95%;"></div>
+                        </div>
+                        <div class="d-flex justify-between mt-2">
+                            <button class="btn-secondary" style="padding: 4px 8px; font-size: 0.8rem;">
+                                <i class="fas fa-volume-up"></i>
+                            </button>
+                            <button class="btn-primary" style="padding: 4px 8px; font-size: 0.8rem;">
+                                复习
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 分页 -->
+                <div class="d-flex justify-between align-center mt-4">
+                    <div>
+                        显示 1-6，共 157 个词汇
+                    </div>
+                    <div class="d-flex gap-1">
+                        <button class="btn-secondary" disabled>上一页</button>
+                        <button class="btn-primary">1</button>
+                        <button class="btn-secondary">2</button>
+                        <button class="btn-secondary">3</button>
+                        <button class="btn-secondary">...</button>
+                        <button class="btn-secondary">26</button>
+                        <button class="btn-secondary">下一页</button>
+                    </div>
+                </div>
+                
+                <!-- 复习模式（默认隐藏） -->
+                <div id="review-mode" class="bg-white rounded shadow p-4 mt-4" style="display: none;">
+                    <h2 class="mb-3">复习模式</h2>
+                    <div class="text-center mb-4">
+                        <div class="font-jp mb-2" style="font-size: 2rem
+(Content truncated due to size limit. Use line ranges to read in chunks)

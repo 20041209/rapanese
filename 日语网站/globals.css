@@ -1,0 +1,287 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* 主色调 - 基于《铃芽之旅》海报 */
+  --primary-color: #4a6da7; /* 蓝色调 */
+  --secondary-color: #e88e5a; /* 橙色调 */
+  --accent-color: #d35d47; /* 红色调 */
+  --background-color: #f5f7fa; /* 浅灰背景 */
+  --text-color: #333333; /* 主文本色 */
+  --text-light: #666666; /* 次要文本色 */
+  --white: #ffffff;
+  --black: #000000;
+  --success: #4caf50; /* 成功提示色 */
+  --warning: #ff9800; /* 警告提示色 */
+  --error: #f44336; /* 错误提示色 */
+  
+  /* 尺寸 */
+  --header-height: 60px;
+  --footer-height: 50px;
+  --sidebar-width: 250px;
+  --border-radius: 8px;
+  --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  
+  /* 动画 */
+  --transition-speed: 0.3s;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif mb-4;
+    color: var(--primary-color);
+  }
+  
+  a {
+    @apply no-underline;
+    color: var(--primary-color);
+    transition: color var(--transition-speed);
+  }
+  
+  a:hover {
+    color: var(--accent-color);
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-4 py-2 rounded-md text-white;
+    background-color: var(--primary-color);
+    transition: all var(--transition-speed);
+  }
+  
+  .btn-primary:hover {
+    background-color: #3a5d97;
+  }
+  
+  .btn-secondary {
+    @apply px-4 py-2 rounded-md text-white;
+    background-color: var(--secondary-color);
+    transition: all var(--transition-speed);
+  }
+  
+  .btn-secondary:hover {
+    background-color: #d87e4a;
+  }
+  
+  .btn-accent {
+    @apply px-4 py-2 rounded-md text-white;
+    background-color: var(--accent-color);
+    transition: all var(--transition-speed);
+  }
+  
+  .btn-accent:hover {
+    background-color: #c34d37;
+  }
+  
+  .container {
+    @apply mx-auto px-4;
+    max-width: 1200px;
+  }
+  
+  .card {
+    @apply bg-white rounded-lg shadow p-4;
+  }
+  
+  .navbar {
+    @apply fixed top-0 left-0 w-full h-[60px] bg-white shadow-md z-50 flex justify-between items-center px-8;
+  }
+  
+  .footer {
+    @apply fixed bottom-0 left-0 w-full h-[50px] z-40 flex justify-center items-center;
+    background-color: var(--primary-color);
+    color: var(--white);
+  }
+  
+  .main-content {
+    @apply pt-[60px] pb-[50px] min-h-screen;
+  }
+  
+  .hero {
+    @apply flex flex-col justify-center items-center text-center text-white p-8;
+    height: 70vh;
+    background: linear-gradient(135deg, rgba(74, 109, 167, 0.8), rgba(211, 93, 71, 0.8));
+  }
+  
+  .feature-card {
+    @apply bg-white rounded-lg shadow p-8 text-center transition-transform;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .feature-icon {
+    @apply text-5xl mb-4;
+    color: var(--primary-color);
+  }
+  
+  .video-container {
+    @apply relative w-full bg-black rounded-lg overflow-hidden mb-4;
+  }
+  
+  .subtitle-container {
+    @apply relative p-4 rounded-lg mb-4;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  
+  .subtitle-jp {
+    @apply text-xl mb-2;
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+  
+  .subtitle-cn {
+    @apply text-base;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .learning-guide {
+    @apply bg-white p-4 mb-4 rounded-r-lg;
+    border-left: 4px solid var(--primary-color);
+  }
+  
+  .tool-card {
+    @apply bg-white rounded-lg shadow p-6 text-center cursor-pointer transition-all;
+  }
+  
+  .tool-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .tool-icon {
+    @apply text-3xl mb-2;
+    color: var(--primary-color);
+  }
+  
+  .word-tooltip {
+    @apply absolute bg-white rounded-lg shadow p-4 z-50 max-w-[300px];
+  }
+  
+  .danmaku-container {
+    @apply absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden;
+  }
+  
+  .danmaku-item {
+    @apply absolute whitespace-nowrap font-bold px-2 py-1 rounded opacity-85;
+  }
+  
+  .word-danmaku {
+    background-color: rgba(65, 105, 225, 0.7);
+    color: white;
+  }
+  
+  .grammar-danmaku {
+    background-color: rgba(50, 205, 50, 0.7);
+    color: white;
+  }
+  
+  .gap-filling-game {
+    @apply bg-white rounded-lg shadow p-8 mb-8;
+  }
+  
+  .vocabulary-card {
+    @apply bg-white rounded-lg shadow p-6 transition-transform;
+  }
+  
+  .vocabulary-card:hover {
+    transform: translateY(-3px);
+  }
+  
+  .report-card {
+    @apply bg-white rounded-lg shadow p-8 mb-8;
+  }
+  
+  .progress-chart {
+    @apply h-[300px] mb-8;
+  }
+  
+  .quote-section {
+    @apply rounded-lg p-8;
+    background-color: rgba(74, 109, 167, 0.1);
+  }
+}
+
+/* 动画 */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slideInUp {
+  from { 
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to { 
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn var(--transition-speed) ease-in;
+}
+
+.slide-in-right {
+  animation: slideInRight var(--transition-speed) ease-out;
+}
+
+.slide-in-up {
+  animation: slideInUp var(--transition-speed) ease-out;
+}
+
+/* 加载指示器 */
+.loading-indicator {
+  @apply flex justify-center items-center h-[100px];
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(74, 109, 167, 0.3);
+  border-radius: 50%;
+  border-top: 4px solid var(--primary-color);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 响应式设计 */
+@media (max-width: 992px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+  
+  .hero p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero {
+    height: 60vh;
+  }
+}

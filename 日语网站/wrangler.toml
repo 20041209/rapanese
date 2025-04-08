@@ -1,0 +1,28 @@
+name = "anime-nihongo-daily"
+compatibility_date = "2023-12-01"
+
+# 静态资源配置
+[site]
+bucket = "./.next/static"
+
+# D1 数据库配置
+[[d1_databases]]
+binding = "DB"
+database_name = "anime_nihongo_daily"
+database_id = "local"
+
+# 环境变量
+[vars]
+ENVIRONMENT = "production"
+
+# 开发环境配置
+[env.development]
+name = "anime-nihongo-daily-dev"
+[env.development.vars]
+ENVIRONMENT = "development"
+
+# 生产环境配置
+[env.production]
+name = "anime-nihongo-daily"
+[env.production.vars]
+ENVIRONMENT = "production"

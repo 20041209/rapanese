@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学习报告 - Anime日语每日课</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Noto+Serif:wght@400;700&family=Noto+Serif+JP:wght@400;700&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="app">
+        <!-- 导航栏 -->
+        <nav class="navbar">
+            <div class="navbar-logo">
+                <img src="images/logo.png" alt="Anime日语每日课">
+                <h1>Anime日语每日课</h1>
+            </div>
+            <div class="navbar-links">
+                <a href="index.html" class="navbar-link">首页</a>
+                <a href="today.html" class="navbar-link">今日学习</a>
+                <a href="vocabulary.html" class="navbar-link">我的词库</a>
+                <a href="reports.html" class="navbar-link active">学习报告</a>
+                <a href="settings.html" class="navbar-link">设置</a>
+                <a href="help.html" class="navbar-link">帮助</a>
+            </div>
+            <div class="navbar-user">
+                <img src="images/avatar.png" alt="用户头像">
+                <span>用户名</span>
+            </div>
+            <button class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+
+        <!-- 主内容 -->
+        <main class="main-content">
+            <div class="reports-page container">
+                <h1 class="mb-3">学习报告</h1>
+                
+                <!-- 报告选择 -->
+                <div class="d-flex justify-between align-center mb-4 flex-wrap gap-2">
+                    <div>
+                        <h2>每周学习报告</h2>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button class="btn-secondary">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <select class="p-2 rounded">
+                            <option>2025年4月第1周</option>
+                            <option>2025年3月第4周</option>
+                            <option>2025年3月第3周</option>
+                            <option>2025年3月第2周</option>
+                            <option>2025年3月第1周</option>
+                        </select>
+                        <button class="btn-secondary">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 本周报告卡片 -->
+                <div class="report-card">
+                    <div class="report-header">
+                        <h3>2025年4月第1周学习报告</h3>
+                        <div class="report-period">2025/04/01 - 2025/04/07</div>
+                    </div>
+                    
+                    <!-- 学习概览 -->
+                    <div class="report-summary">
+                        <div class="summary-item">
+                            <div class="summary-value">7</div>
+                            <div class="summary-label">学习天数</div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-value">70</div>
+                            <div class="summary-label">学习分钟</div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-value">42</div>
+                            <div class="summary-label">新增词汇</div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-value">28</div>
+                            <div class="summary-label">已掌握</div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-value">85%</div>
+                            <div class="summary-label">跟读准确率</div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-value">92%</div>
+                            <div class="summary-label">填空正确率</div>
+                        </div>
+                    </div>
+                    
+                    <!-- 进步曲线图 -->
+                    <h3 class="mb-2">学习进度</h3>
+                    <div class="progress-chart mb-4">
+                        <!-- 这里将使用Canvas或图表库绘制图表，此处用占位图 -->
+                        <img src="images/progress-chart.png" alt="进步曲线图" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    
+                    <!-- 掌握度分布 -->
+                    <h3 class="mb-2">掌握度分布</h3>
+                    <div class="mastery-charts">
+                        <!-- 词汇掌握度 -->
+                        <div>
+                            <h4 class="mb-2">词汇掌握度</h4>
+                            <div class="mastery-bars">
+                                <div class="mastery-bar">
+                                    <div class="bar-label">初学</div>
+                                    <div class="bar-container">
+                                        <div class="bar-fill beginner" style="width: 15%;"></div>
+                                    </div>
+                                    <div class="bar-value">15%</div>
+                                </div>
+                                <div class="mastery-bar">
+                                    <div class="bar-label">熟悉</div>
+                                    <div class="bar-container">
+                                        <div class="bar-fill intermediate" style="width: 35%;"></div>
+                                    </div>
+                                    <div class="bar-value">35%</div>
+                                </div>
+                                <div class="mastery-bar">
+                                    <div class="bar-label">精通</div>
+                                    <div class="bar-container">
+                                        <div class="bar-fill advanced" style="width: 30%;"></div>
+                                    </div>
+                                    <div class="bar-value">30%</div>
+                                </div>
+                                <div class="mastery-bar">
+                                    <div class="bar-label">掌握</div>
+                                    <div class="bar-container">
+                                        <div class="bar-fill mastered" style="width: 20%;"></div>
+                                    </div>
+                                    <div class="bar-value">20%</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 语法掌握度 -->
+                        <div>
+                            <h4 class="mb-2">语法掌握度</h4>
+                            <div class="mastery-bars">
+                                <div class="mastery-bar">
+                                    <div class="bar-label">初学</div>
+                                    <div class="bar-container">
+                                        <div class="bar-fill beginner" style="width: 25%;"></div>
+                                    </div>
+                                    <div class="bar-value">25%</div>
+                                </div>
+                                <div class="mastery-bar">
+                                    <div class="bar-label">熟悉</div>
+                                    <div class="bar-container">
+                                        <div class="bar-fill intermediate" style="width: 40%;"></div>
+                                    </div>
+                                    <div class="bar-value">40%</div>
+                                </div>
+                                <div class="mastery-bar">
+                                    <div class="bar-label">精通</div>
+                                    <div class="bar-container">
+                                        <div class="bar-fill advanced" style="width: 20%;"></div>
+                                    </div>
+                                    <div class="bar-value">20%</div>
+                                </div>
+                                <div class="mastery-bar">
+                                    <div class="bar-label">掌握</div>
+                                    <div class="bar-container">
+                                        <div class="bar-fill mastered" style="width: 15%;"></div>
+                                    </div>
+                                    <div class="bar-value">15%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 本周学习内容 -->
+                    <h3 class="mb-2 mt-4">本周学习内容</h3>
+                    <div class="bg-white p-3 rounded mb-4" style="border: 1px solid #eee;">
+                        <h4 class="mb-2">学习片段</h4>
+                        <div class="d-flex flex-wrap gap-2">
+                            <div class="p-2 bg-primary text-white rounded">被动形：〜される</div>
+                            <div class="p-2 bg-primary text-white rounded">校园场景词汇</div>
+                            <div class="p-2 bg-primary text-white rounded">日常对话表达</div>
+                            <div class="p-2 bg-primary text-white rounded">时间表达</div>
+                            <div class="p-2 bg-primary text-white rounded">情感表达</div>
+                            <div class="p-2 bg-primary text-white rounded">科幻主题词汇</div>
+                            <div class="p-2 bg-primary text-white rounded">热血动漫表达</div>
+                        </div>
+                    </div>
+                    
+                    <!-- 学习建议 -->
+                    <h3 class="mb-2">学习建议</h3>
+                    <div class="bg-white p-3 rounded mb-4" style="border: 1px solid #eee;">
+                        <ul>
+                            <li class="mb-1">建议重点复习被动形语法，当前掌握度较低</li>
+                            <li class="mb-1">科幻主题词汇学习进度良好，可以尝试更多相关内容</li>
+                            <li class="mb-1">发音准确率有所提升，建议继续使用跟读功能</li>
+                            <li class="mb-1">建议增加每日学习时间，从10分钟提升到15分钟</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- 动漫角色名言 -->
+                    <div class="quote-section">
+                        <h3 class="mb-3 text-center">本周激励</h3>
+                        <div class="anime-quote">
+                            <div class="quote-text">「諦めないで。自分の夢を信じ続けることが大切だ。」</div>
+                            <div class="quote-translation">"不要放弃。重要的是继续相信自己的梦想。"</div>
+                            <div class="quote-source">— <span class="character">立花 瀧</span>，<span class="anime">《你的名字。》</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 历史报告列表 -->
+                <h2 class="mb-3 mt-4">历史报告</h2>
+                <div class="bg-white rounded shadow p-3">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="border-bottom: 1px solid #eee;">
+                                <th style="text-align: left; padding: 10px;">报告期间</th>
+                                <th style="text-align: center; padding: 10px;">学习天数</th>
+                                <th style="text-align: center; padding: 10px;">学习时间</th>
+                                <th style="text-align: center; padding: 10px;">新增词汇</th>
+                                <th style="text-align: center; padding: 10px;">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #eee;">
+                                <td style="padding: 10px;">2025年3月第4周</td>
+                                <td style="text-align: center; padding: 10px;">6</td>
+                                <td style="text-align: center; padding: 10px;">65分钟</td>
+                                <td style="text-align: center; padding: 10px;">38</td>
+                                <td style="text-align: center; padding: 10px;">
+                                    <button class="btn-primary" style="padding: 4px 8px; font-size: 0.8rem;">查看</button>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #eee;">
+                                <td style="padding: 10px;">2025年3月第3周</td>
+                                <td style="text-align: center; padding: 10px;">7</td>
+                                <td style="text-align: center; padding: 10px;">75分钟</td>
+                                <td style="text-align: center; padding: 10px;">45</td>
+                                <td style="text-align: center; padding: 10px;">
+                                    <button class="btn-primary" style="padding: 4px 8px; font-size: 0.8rem;">查看</button>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #eee;">
+                                <td style="padding: 10px;">2025年3月第2周</td>
+                                <td style="text-align: center; padding: 10px;">5</td>
+                                <td style="text-align: center; padding: 10px;">50分钟</td>
+                                <td style="text-align: center; padding: 10px;">32</td>
+                                <td style="text-align: center; padding: 10px;">
+                                    <button class="btn-primary" style="padding: 4px 8px; font-size: 0.8rem;">查看</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px;">2025年3月第1周</td>
+                                <td style="text-align: center; padding: 10px;">4</td>
+                                <td style="text-align: center; padding: 10px;">40分钟</td>
+                                <td style="text-align: center; padding: 10px;">28</td>
+                                <td style="text-align: center; padding: 10px;">
+                                    <button class="btn-primary" style="padding: 4px 8px; font-size: 0.8rem;">查看</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- 导出选项 -->
+                <div class="d-flex justify-between mt-4">
+                    <button class="btn-secondary">
+                        <i class="fas fa-download mr-1"></i> 导出PDF
+                    </button>
+                    <button class="btn-secondary">
+                        <i class="fas fa-share-alt mr-1"></i> 分享报告
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <!-- 页脚 -->
+        <footer class="footer">
+            <p>&copy; 2025 Anime日语每日课 | 基于《铃芽之旅》设计风格</p>
+        </footer>
+    </div>
+
+    <script>
+        // 移动菜单切换
+        document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+            document.querySelector('.navbar-links').classList.toggle('open');
+        });
+    </script>
+</body>
+</html>

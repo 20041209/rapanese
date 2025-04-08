@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>今日学习 - Anime日语每日课</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Noto+Serif:wght@400;700&family=Noto+Serif+JP:wght@400;700&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="app">
+        <!-- 导航栏 -->
+        <nav class="navbar">
+            <div class="navbar-logo">
+                <img src="images/logo.png" alt="Anime日语每日课">
+                <h1>Anime日语每日课</h1>
+            </div>
+            <div class="navbar-links">
+                <a href="index.html" class="navbar-link">首页</a>
+                <a href="today.html" class="navbar-link active">今日学习</a>
+                <a href="vocabulary.html" class="navbar-link">我的词库</a>
+                <a href="reports.html" class="navbar-link">学习报告</a>
+                <a href="settings.html" class="navbar-link">设置</a>
+                <a href="help.html" class="navbar-link">帮助</a>
+            </div>
+            <div class="navbar-user">
+                <img src="images/avatar.png" alt="用户头像">
+                <span>用户名</span>
+            </div>
+            <button class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+
+        <!-- 主内容 -->
+        <main class="main-content">
+            <div class="today-learning container">
+                <h1 class="mb-3">今日学习</h1>
+                
+                <!-- 视频播放区域 -->
+                <div class="video-container">
+                    <video class="video-player" id="video-player" controls poster="images/video-thumbnail.jpg">
+                        <source src="media/sample-clip.mp4" type="video/mp4">
+                        您的浏览器不支持视频播放。
+                    </video>
+                    
+                    <!-- 弹幕容器 -->
+                    <div id="danmaku-container" class="danmaku-container"></div>
+                </div>
+                
+                <!-- 字幕区域 -->
+                <div class="subtitle-container">
+                    <div class="subtitle-jp" id="subtitle-jp">私は毎日学校に行きます。友達と一緒に勉強されています。</div>
+                    <div class="subtitle-cn" id="subtitle-cn">我每天去学校。和朋友一起学习。</div>
+                </div>
+                
+                <!-- 视频控制区域 -->
+                <div class="video-controls">
+                    <button class="btn-primary" id="jp-subtitle-btn">日语字幕</button>
+                    <button class="btn-primary" id="cn-subtitle-btn">中文字幕</button>
+                    <button class="btn-primary" id="dual-subtitle-btn">双语字幕</button>
+                    <button class="btn-primary" id="no-subtitle-btn">关闭字幕</button>
+                    <button class="btn-secondary" id="danmaku-toggle">关闭弹幕</button>
+                    <button class="btn-secondary" id="danmaku-settings">弹幕设置</button>
+                </div>
+                
+                <!-- 导学内容 -->
+                <div class="learning-guide">
+                    <h3>今日重点：掌握"〜される"的两种用法</h3>
+                    <p>在今天的片段中，我们将学习日语被动形"〜される"的两种常见用法：</p>
+                    <ol>
+                        <li>表示被动作：某人被他人做某事</li>
+                        <li>表示自发：某事自然而然地发生</li>
+                    </ol>
+                    <p>请注意片段中"勉強されています"的用法，体会被动形的语感。</p>
+                </div>
+                
+                <!-- 互动工具区域 -->
+                <h2 class="mt-4 mb-3">互动学习工具</h2>
+                <div class="interactive-tools">
+                    <!-- 慢速复读 -->
+                    <div class="tool-card" id="slow-replay-tool">
+                        <div class="tool-icon">
+                            <i class="fas fa-volume-down"></i>
+                        </div>
+                        <h3>慢速复读</h3>
+                        <p>生成角色台词的慢速版音频，保持原声情感</p>
+                    </div>
+                    
+                    <!-- 跟读打分 -->
+                    <div class="tool-card" id="pronunciation-tool">
+                        <div class="tool-icon">
+                            <i class="fas fa-microphone"></i>
+                        </div>
+                        <h3>跟读打分</h3>
+                        <p>录音跟读，AI评估您的发音准确度</p>
+                    </div>
+                    
+                    <!-- 趣味填空 -->
+                    <div class="tool-card" id="gap-filling-tool">
+                        <div class="tool-icon">
+                            <i class="fas fa-puzzle-piece"></i>
+                        </div>
+                        <h3>趣味填空</h3>
+                        <p>通过填空游戏巩固所学内容</p>
+                    </div>
+                    
+                    <!-- 快捷键帮助 -->
+                    <div class="tool-card" id="shortcut-help-tool">
+                        <div class="tool-icon">
+                            <i class="fas fa-keyboard"></i>
+                        </div>
+                        <h3>快捷键帮助</h3>
+                        <p>查看键盘快捷键列表，提高操作效率</p>
+                    </div>
+                </div>
+                
+                <!-- 填空游戏区域（默认隐藏） -->
+                <div id="gap-filling-game" class="gap-filling-game" style="display: none;">
+                    <h3 class="mb-3">趣味填空游戏</h3>
+                    <div class="game-question">
+                        私は毎日<span class="gap">_____</span>に行きます。友達と一緒に<span class="gap">_____</span>されています。
+                    </div>
+                    <div class="game-options">
+                        <div class="game-option" data-value="学校">学校</div>
+                        <div class="game-option" data-value="教室">教室</div>
+                        <div class="game-option" data-value="大学">大学</div>
+                        <div class="game-option" data-value="図書館">図書館</div>
+                    </div>
+                    <div class="game-options">
+                        <div class="game-option" data-value="勉強">勉強</div>
+                        <div class="game-option" data-value="遊び">遊び</div>
+                        <div class="game-option" data-value="食べ">食べ</div>
+                        <div class="game-option" data-value="話し">話し</div>
+                    </div>
+                    <div class="d-flex justify-between mt-3">
+                        <button class="btn-primary" id="check-answer-btn">检查答案</button>
+                        <button class="btn-secondary" id="reset-game-btn">重新开始</button>
+                        <button class="btn-accent" id="close-game-btn">关闭游戏</button>
+                    </div>
+                </div>
+                
+                <!-- 慢速复读面板（默认隐藏） -->
+                <div id="slow-replay-panel" class="bg-white rounded shadow p-3 mt-3" style="display: none;">
+                    <h3 class="mb-2">慢速复读</h3>
+                    <div class="d-flex justify-between align-center mb-2">
+                        <div>
+                            <label for="speed-slider">速度：</label>
+                            <span id="speed-value">0.7x</span>
+                        </div>
+                        <input type="range" id="speed-slider" min="0.5" max="0.9" step="0.1" value="0.7" style="width: 200px;">
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button class="btn-primary" id="play-slow-btn">
+                            <i class="fas fa-play mr-1"></i> 播放慢速版
+                        </button>
+                        <button class="btn-secondary" id="play-original-btn">
+                            <i class="fas fa-play mr-1"></i> 播放原速版
+                        </button>
+                        <button class="btn-accent" id="close-replay-btn">关闭</button>
+                    </div>
+                </div>
+                
+                <!-- 跟读打分面板（默认隐藏） -->
+                <div id="pronunciation-panel" class="bg-white rounded shadow p-3 mt-3" style="display: none;">
+                    <h3 class="mb-2">跟读打分</h3>
+                    <p class="mb-2">请跟读以下句子：</p>
+                    <div class="bg-primary text-white p-2 rounded mb-2 font-jp">
+                        私は毎日学校に行きます。友達と一緒に勉強されています。
+                    </div>
+                    <div class="d-flex gap-2 mb-2">
+                        <button class="btn-primary" id="listen-btn">
+                            <i class="fas fa-volume-up mr-1"></i> 听原声
+                        </button>
+                        <button class="btn-secondary" id="record-btn">
+                            <i class="fas fa-microphone mr-1"></i> 开始录音
+                        </button>
+                        <button class="btn-accent" id="close-pronunciation-btn">关闭</button>
+                    </div>
+                    <div id="recording-status" class="text-center p-2" style="display: none;">
+                        <div class="spinner"></div>
+                        <p>正在录音...</p>
+                    </div>
+                    <div id="score-result" class="text-center p-2" style="display: none;">
+                        <div class="score-emoji" style="font-size: 3rem;">😊</div>
+                        <p class="score-text">发音优秀！</p>
+                        <div class="score-details mt-2">
+                            <p>准确率：92%</p>
+                            <p>流利度：85%</p>
+                            <p>语调：90%</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 快捷键帮助面板（默认隐藏） -->
+                <div id="shortcut-help-panel" class="bg-white rounded shadow p-3 mt-3" style="display: none;">
+                    <h3 class="mb-2">键盘快捷键</h3>
+                    <div class="shortcut-help">
+                        <div class="shortcut-key">空格</div>
+                        <div>播放/暂停视频</div>
+                        
+                        <div class="shortcut-key">←</div>
+                        <div>后退5秒</div>
+                        
+                        <div class="shortcut-key">→</div>
+                        <div>前进5秒</div>
+                        
+                        <div class="shortcut-key">↑</div>
+                        <div>增加音量</div>
+                        
+                        <div class="shortcut-key">↓</div>
+                        <div>减小音量</div>
+                        
+                        <div class="shortcut-key">M</div>
+                        <div>静音/取消静音</div>
+                        
+                        <div class="shortcut-key">F</div>
+                        <div>全屏/退出全屏</div>
+                        
+                        <div class="shortcut-key">S</div>
+                        <div>切换字幕显示模式</div>
+                        
+                        <div class="shortcut-key">J</div>
+                        <div>仅显示日语字幕</div>
+                        
+                        <div class="shortcut-key">C</div>
+                        <div>仅显示中文字幕</div>
+                        
+                        <div class="shortcut-key">D</div>
+                        <div>显示双语字幕</div>
+                        
+                        <div class="shortcut-key">R</div>
+                        <div>慢速复读</div>
+                        
+                        <div class="shortcut-key">P</div>
+                        <div>开始跟读练习</div>
+                        
+                        <div class="shortcut-key">G</div>
+                        <div>开始填空游戏</div>
+                        
+                        <div class="shortcut-key">H</div>
+                        <div>显示/隐藏帮助</div>
+                        
+                        <div class="shortcut-key">Esc</div>
+                        <div>关闭所有弹窗</div>
+                    </div>
+                    <div class="text-center mt-3">
+                        <button class="btn-accent" id="close-shortcut-btn">关闭</button>
+                    </div>
+                </div>
+                
+                <!-- 词汇提示（示例，实际会动态生成） -->
+                <div class="word-tooltip" id="word-tooltip" style="display: none; top: 300px; left: 400px;">
+                    <div class="word-tooltip-header">
+                        <span class="word-tooltip-word">学校</span>
+                        <span class="word-tooltip-reading">がっこう</span>
+                    </div>
+                    <div class="word-tooltip-meaning">学校</div>
+                    <div class="word-tooltip-example">毎日学校に行きます。</div>
+                    <div class="d-flex justify-between mt-2">
+                        <span class="badge bg-primary text-white p-1 rounded">N5</span>
+                        <button class="btn-secondary" style="padding: 2px 8px; font-size: 0.8rem;">收藏</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- 页脚 -->
+        <footer class="footer">
+            <p>&copy; 2025 Anime日语每日课 | 基于《铃芽之旅》设计风格</p>
+        </footer>
+    </div>
+
+    <script>
+        // 移动菜单切换
+        document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+            document.querySelector('.navbar-links').classList.toggle('open');
+        });
+        
+        // 字幕控制
+        document.getElementById('jp-subtitle-btn').addEventListener('click', function() {
+            document.getElementById('subtitle-jp').style.display = 'block';
+            document.getElementById('subtitle-cn').style.display = 'none';
+        });
+        
+        document.getElementById('cn-subtitle-btn').addEventListener('click', function() {
+            document.getElementById('subtitle-jp').style.display = 'none';
+            document.getElementById('subtitle-cn').style.display = 'block';
+        });
+        
+        document.getElementById('dual-subtitle-btn').addEventListener('click', function() {
+            document.getElementById('subtitle-jp').style.display = 'block';
+            document.getElementById('subtitle-cn').style.display = 'block';
+        });
+        
+        document.getElementById('no-subtitle-btn').addEventListener('click', function() {
+            document.getElementById('subtitle-jp').style.display = 'none';
+            document.getElementById('subtitle-cn').style.display = 'none';
+        });
+        
+        // 弹幕控制
+        let danmakuEnabled = true;
+        document.getElementById('danmaku-toggle').addEventListener('click', function() {
+            danmakuEnabled = !danmakuEnabled;
+            document.getElementById('danmaku-container').style.display = danmakuEnabled ? 'block' : 'none';
+            this.textContent = danmakuEnabled ? '关闭弹幕' : '开启弹幕';
+        });
+        
+        // 互动工具控制
+        document.getElementById('slow-replay-tool').addEventListener('click', function() {
+            document.getElementById('slow-replay-panel').style.display = 'block';
+            document.getElementById('pronunciation-panel').style.display = 'none';
+            document.getElementById('gap-filling-game').style.display = 'none';
+            document.getElementById('shortcut-help-panel').style.display = 'none';
+        });
+        
+        document.getElementById('pronunciation-tool').addEventListener('click', function() {
+            document.getElementById('slow-replay-panel').style.display = 'none';
+            document.getElementById('pronunciation-panel').style.display = 'block';
+            document.getElementById('gap-filling-game').style.display = 'none';
+            document.getElementById('shortcut-help-panel').style.display = 'none';
+        });
+        
+        document.getElementById('gap-filling-tool').addEventListener('click', function() {
+            document.getElementById('slow-replay-panel').style.display = 'none';
+            document.getElementById('pronunciation-panel').style.display = 'none';
+            document.getElementById('gap-filling-game').style.display = 'block';
+            document.getElementById('shortcut-help-panel').
+(Content truncated due to size limit. Use line ranges to read in chunks)

@@ -1,0 +1,69 @@
+# 部署配置文件
+name: anime-nihongo-daily
+version: 1.0.0
+description: 基于动漫片段的日语学习应用
+
+# 构建配置
+build:
+  command: npm run build
+  output: .next
+
+# 环境变量
+env:
+  - name: NODE_ENV
+    value: production
+  - name: DATABASE_URL
+    value: ${DATABASE_URL}
+
+# 部署钩子
+hooks:
+  - name: pre-deploy
+    command: npm run db:migrate
+  - name: post-deploy
+    command: npm run db:seed
+
+# 路由配置
+routes:
+  - path: /api/*
+    methods: [GET, POST, PUT, DELETE]
+    cors: true
+    rate_limit:
+      requests: 100
+      period: 60s
+  
+  - path: /*
+    methods: [GET]
+    cors: false
+    cache:
+      max_age: 3600
+      stale_while_revalidate: 300
+
+# 资源配置
+resources:
+  - name: database
+    type: d1_database
+    config:
+      name: anime_nihongo_daily
+  
+  - name: storage
+    type: r2_bucket
+    config:
+      name: anime-nihongo-media
+
+# 缩放配置
+scaling:
+  min_instances: 1
+  max_instances: 5
+  target_request_concurrency: 10
+
+# 监控配置
+monitoring:
+  alerts:
+    - name: high_error_rate
+      condition: error_rate > 5%
+      duration: 5m
+      notification: email
+  
+  logs:
+    retention: 7d
+    level: info
